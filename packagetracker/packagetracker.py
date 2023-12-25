@@ -109,7 +109,7 @@ def show_history():
     picture_cell = tracker_sheet["latest_release"].offset(row_offset=2)
 
     # Use the "seaborn" style for the Matplotlib plots produced by pandas
-    plt.style.use("seaborn")
+    plt.style.use("seaborn-v0_8")
 
     # Check input
     if not package_name:
