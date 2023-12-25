@@ -104,7 +104,7 @@ def create_db():
     )
     """
 
-    sql_statements = [sql_table_packages, sql_table_versions]
+    sql_statements = [text(sql_table_packages), text(sql_table_versions)]
     with engine.connect() as con:
         for sql in sql_statements:
             con.execute(sql)
