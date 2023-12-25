@@ -76,7 +76,9 @@ def delete_versions():
     """Delete all records from the version table"""
 
     with engine.connect() as con:
-        con.execute("DELETE FROM package_versions")
+        query = text("DELETE FROM package_versions")
+        con.execute(query)
+        con.commit()
 
 
 def create_db():
