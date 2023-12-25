@@ -40,8 +40,11 @@ def store_package(package_name):
 
     try:
         with engine.connect() as con:
-            con.execute(text("INSERT INTO packages (package_name) VALUES (:package_name)"),
-                        package_name=package_name)
+            query = text(
+                """INSERT INTO packages (package_name) VALUES (:package_name)"""
+            )
+            con.execute(query, {"package_name": package_name})
+            con.commit()
         return None
     except sqlalchemy.exc.IntegrityError:
         return f"{package_name} already exists"
